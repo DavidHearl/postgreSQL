@@ -1,3 +1,5 @@
+''' Docstring for PEP8'''
+
 from sqlalchemy import (
     create_engine, Column, Integer, String
 )
@@ -10,8 +12,8 @@ db = create_engine("postgresql:///chinook")
 base = declarative_base()
 
 
-#create a class-based model for the "Programmer" table
 class Programmer(base):
+    ''' Docstring for PEP8 '''
     __tablename__ = "Programmer"
     id = Column(Integer, primary_key=True)
     first_name = Column(String)
@@ -33,61 +35,104 @@ base.metadata.create_all(db)
 
 # creating records on our Programmer table
 ada_lovelace = Programmer(
-    first_name = "Ada",
-    last_name = "Lovelace",
-    gender = "F",
-    nationality = "British",
-    famous_for = "First Programmer"
+    first_name="Ada",
+    last_name="Lovelace",
+    gender="F",
+    nationality="British",
+    famous_for="First Programmer"
 )
 
 alan_turing = Programmer(
-    first_name = "Ada",
-    last_name = "Lovelace",
-    gender = "M",
-    nationality = "British",
-    famous_for = "Modern Computing"
+    first_name="Ada",
+    last_name="Lovelace",
+    gender="M",
+    nationality="British",
+    famous_for="Modern Computing"
 )
 
 grace_hopper = Programmer(
-    first_name = "Grace",
-    last_name = "Hopper",
-    gender = "F",
-    nationality = "American",
-    famous_for = "COBOL language"
+    first_name="Grace",
+    last_name="Hopper",
+    gender="F",
+    nationality="American",
+    famous_for="COBOL language"
 )
 
 margaret_hamilton = Programmer(
-    first_name = "Margaret",
-    last_name = "Hamiltion",
-    gender = "F",
-    nationality = "American",
-    famous_for = "Apollo 11"
+    first_name="Margaret",
+    last_name="Hamiltion",
+    gender="F",
+    nationality="American",
+    famous_for="Apollo 11"
 )
 
 bill_gates = Programmer(
-    first_name = "Bill",
-    last_name = "Gates",
-    gender = "M",
-    nationality = "American",
-    famous_for = "Microsoft"
+    first_name="Bill",
+    last_name="Gates",
+    gender="M",
+    nationality="American",
+    famous_for="Microsoft"
 )
 
 tim_berners_lee = Programmer(
-    first_name = "Tim",
-    last_name = "Burners-Lee",
-    gender = "M",
-    nationality = "British",
-    famous_for = "World Wide Web"
+    first_name="Tim",
+    last_name="Burners-Lee",
+    gender="M",
+    nationality="British",
+    famous_for="World Wide Web"
+)
+
+david_hearl = Programmer(
+    first_name="David",
+    last_name="Hearl",
+    gender="M",
+    nationality="British",
+    famous_for="Studying at Code Institute"
 )
 
 
 # add each instance of our programmers to our session
 # session.add(ada_lovelace)
-session.add(alan_turing)
-session.add(grace_hopper)
-session.add(margaret_hamilton)
-session.add(bill_gates)
-session.add(tim_berners_lee)
+# session.add(alan_turing)
+# session.add(grace_hopper)
+# session.add(margaret_hamilton)
+# session.add(bill_gates)
+# session.add(tim_berners_lee)
+# session.add(david_hearl)
+
+# updating a single record
+# programmer = session.query(Programmer).filter_by(id=7).first()
+# programmer.famous_for = "World President"
+
+
+# updating multiple records
+# people = session.query(Programmer)
+# for person in people:
+#     if person.gender == "F":
+#         person.gender = "Female"
+#     elif person.gender == "M":
+#         person.gender = "Male"
+#     else:
+#         print("Generder not defined")
+#     session.commit()
+
+
+# deleting a single record
+# fname = input("Enter a first name: ")
+# lname = input("Enter a first name: ")
+# programmer = session.query(Programmer).filter_by(first_name=fname, last_name=lname).first()
+# # defensive programming
+# if programmer is not None:
+#     print("Programmer Found: ", programmer.first_name + " " + programmer.last_name)
+#     confirmation = input("Are you sure you want to delete this record? (y/n) ")
+#     if confirmation.lower() == "y":
+#         session.delete(programmer)
+#         session.commit()
+#         print("Programmer has been deleted")
+#     else:
+#         print("Programmer not deleted")
+# else:
+#     print("No records found")
 
 # commit our session to the database
 session.commit()
@@ -102,4 +147,4 @@ for programmer in programmers:
         programmer.nationality,
         programmer.famous_for,
         sep=" | "
-    ) 
+    )
